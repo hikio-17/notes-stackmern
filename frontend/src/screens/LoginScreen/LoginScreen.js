@@ -62,15 +62,15 @@ function LoginScreen({ history }) {
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className="input-group-btn">
+            <div className="">
               <button
                 className="btn btn-outline-primary"
                 onClick={togglePassword}
               >
                 {passwordType === "password" ? (
-                  <i className="bi bi-eye-slash"></i>
+                  <i class="bi bi-eye-slash-fill"></i>
                 ) : (
-                  <i className="bi bi-eye"></i>
+                  <i class="bi bi-eye-fill"></i>
                 )}
               </button>
             </div>
