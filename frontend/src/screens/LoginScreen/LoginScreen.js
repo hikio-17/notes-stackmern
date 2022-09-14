@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
+import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
@@ -56,22 +57,20 @@ function LoginScreen({ history }) {
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control
-              type={passwordType}
-              value={password}
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <div className="">
+            <div className="d-flex">
+              <Form.Control
+                type={passwordType}
+                value={password}
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+
               <button
+                type="button"
                 className="btn btn-outline-primary"
                 onClick={togglePassword}
               >
-                {passwordType === "password" ? (
-                  <i class="bi bi-eye-slash-fill"></i>
-                ) : (
-                  <i class="bi bi-eye-fill"></i>
-                )}
+                {passwordType === "password" ? <EyeSlashFill /> : <EyeFill />}
               </button>
             </div>
           </Form.Group>
