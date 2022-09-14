@@ -12,6 +12,16 @@ function LoginScreen({ history }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [passwordType, setPasswordType] = useState("password");
+
+  const togglePassword = () => {
+    if (passwordType === "password") {
+      setPasswordType("text");
+      return;
+    }
+    setPasswordType("password");
+  };
+
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -47,11 +57,23 @@ function LoginScreen({ history }) {
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
-              type="password"
+              type={passwordType}
               value={password}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
+            <div className="input-group-btn">
+              <button
+                className="btn btn-outline-primary"
+                onClick={togglePassword}
+              >
+                {passwordType === "password" ? (
+                  <i className="bi bi-eye-slash"></i>
+                ) : (
+                  <i className="bi bi-eye"></i>
+                )}
+              </button>
+            </div>
           </Form.Group>
 
           <Button variant="primary" type="submit">
